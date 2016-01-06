@@ -24,16 +24,53 @@
         <!--View Controller-->
         <scene sceneID="tGM-lh-WLQ">
             <objects>
-                <viewController id="NAA-Nk-pJr" sceneMemberID="viewController">
+                <viewController id="NAA-Nk-pJr" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YqE-mc-bIo"/>
                         <viewControllerLayoutGuide type="bottom" id="aDu-nW-pyE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="weW-V0-hUB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-W6-xuI">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Ak-W6-xuI" firstAttribute="leading" secondItem="weW-V0-hUB" secondAttribute="leading" id="8ae-Qk-P8s"/>
+                            <constraint firstItem="3Ak-W6-xuI" firstAttribute="top" secondItem="YqE-mc-bIo" secondAttribute="bottom" id="F9z-0t-UBx"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ak-W6-xuI" secondAttribute="trailing" id="ZwY-GV-irp"/>
+                            <constraint firstItem="3Ak-W6-xuI" firstAttribute="bottom" secondItem="aDu-nW-pyE" secondAttribute="top" id="h72-B8-fND"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3Ak-W6-xuI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8ae-Qk-P8s"/>
+                                <exclude reference="F9z-0t-UBx"/>
+                                <exclude reference="ZwY-GV-irp"/>
+                                <exclude reference="h72-B8-fND"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="3Ak-W6-xuI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8ae-Qk-P8s"/>
+                                <include reference="F9z-0t-UBx"/>
+                                <include reference="ZwY-GV-irp"/>
+                                <include reference="h72-B8-fND"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="eVL-gY-kxS"/>
+                    <connections>
+                        <outlet property="mapView" destination="3Ak-W6-xuI" id="Gid-iV-sfU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZb-JD-tzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

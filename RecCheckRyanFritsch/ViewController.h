@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import <MapKit/MapKit.h>
+
+@interface ViewController : UIViewController{
+    MKMapView *mapView;
+
+}
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
 
 
 @end

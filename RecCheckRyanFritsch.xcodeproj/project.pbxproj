@@ -15,6 +15,7 @@
 		3260FA701C3D92F8005E8894 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3260FA6E1C3D92F8005E8894 /* LaunchScreen.storyboard */; };
 		3260FA7B1C3D92F8005E8894 /* RecCheckRyanFritschTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FA7A1C3D92F8005E8894 /* RecCheckRyanFritschTests.m */; };
 		3260FA861C3D92F8005E8894 /* RecCheckRyanFritschUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FA851C3D92F8005E8894 /* RecCheckRyanFritschUITests.m */; };
+		3260FA941C3D982D005E8894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3260FA931C3D982D005E8894 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		3260FA811C3D92F8005E8894 /* RecCheckRyanFritschUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecCheckRyanFritschUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3260FA851C3D92F8005E8894 /* RecCheckRyanFritschUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecCheckRyanFritschUITests.m; sourceTree = "<group>"; };
 		3260FA871C3D92F8005E8894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3260FA931C3D982D005E8894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3260FA941C3D982D005E8894 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 		3260FA541C3D92F8005E8894 = {
 			isa = PBXGroup;
 			children = (
+				3260FA931C3D982D005E8894 /* MapKit.framework */,
 				3260FA5F1C3D92F8005E8894 /* RecCheckRyanFritsch */,
 				3260FA791C3D92F8005E8894 /* RecCheckRyanFritschTests */,
 				3260FA841C3D92F8005E8894 /* RecCheckRyanFritschUITests */,

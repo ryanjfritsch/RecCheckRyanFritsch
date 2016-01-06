@@ -16,6 +16,7 @@
 		3260FA7B1C3D92F8005E8894 /* RecCheckRyanFritschTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FA7A1C3D92F8005E8894 /* RecCheckRyanFritschTests.m */; };
 		3260FA861C3D92F8005E8894 /* RecCheckRyanFritschUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FA851C3D92F8005E8894 /* RecCheckRyanFritschUITests.m */; };
 		3260FA941C3D982D005E8894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3260FA931C3D982D005E8894 /* MapKit.framework */; };
+		3260FA9C1C3DAD3D005E8894 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FA9B1C3DAD3D005E8894 /* MapPin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		3260FA851C3D92F8005E8894 /* RecCheckRyanFritschUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecCheckRyanFritschUITests.m; sourceTree = "<group>"; };
 		3260FA871C3D92F8005E8894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3260FA931C3D982D005E8894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3260FA9A1C3DAD3D005E8894 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		3260FA9B1C3DAD3D005E8894 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				3260FA641C3D92F8005E8894 /* AppDelegate.m */,
 				3260FA661C3D92F8005E8894 /* ViewController.h */,
 				3260FA671C3D92F8005E8894 /* ViewController.m */,
+				3260FA9A1C3DAD3D005E8894 /* MapPin.h */,
+				3260FA9B1C3DAD3D005E8894 /* MapPin.m */,
 				3260FA691C3D92F8005E8894 /* Main.storyboard */,
 				3260FA6C1C3D92F8005E8894 /* Assets.xcassets */,
 				3260FA6E1C3D92F8005E8894 /* LaunchScreen.storyboard */,
@@ -274,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3260FA9C1C3DAD3D005E8894 /* MapPin.m in Sources */,
 				3260FA681C3D92F8005E8894 /* ViewController.m in Sources */,
 				3260FA651C3D92F8005E8894 /* AppDelegate.m in Sources */,
 				3260FA621C3D92F8005E8894 /* main.m in Sources */,
@@ -415,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = RecCheckRyanFritsch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fritschRyan.2k.RecCheckRyanFritsch;
@@ -426,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = RecCheckRyanFritsch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fritschRyan.2k.RecCheckRyanFritsch;

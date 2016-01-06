@@ -7,17 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import <MapKit/MapKit.h>
+
+#import "MapPin.h"
 
 @interface ViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
-
 @property (strong, nonatomic) MKMapView *mapView;
-
 @property (strong, nonatomic) CLLocationManager *locMan;
-
 @property (weak, nonatomic) IBOutlet UIButton *coordList;
+@property (nonatomic) int started;
 
 
 @end

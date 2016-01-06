@@ -10,13 +10,14 @@
 
 #import <MapKit/MapKit.h>
 
-@interface ViewController : UIViewController{
-    MKMapView *mapView;
+@interface ViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
-}
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) MKMapView *mapView;
 
+@property (strong, nonatomic) CLLocationManager *locMan;
+
+@property (weak, nonatomic) IBOutlet UIButton *coordList;
 
 
 @end

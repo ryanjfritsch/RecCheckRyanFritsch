@@ -12,15 +12,25 @@
 
 @end
 
-
-
 @implementation ViewController
 
-@synthesize mapView = _mapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.locMan = [[CLLocationManager alloc] init];
+    self.locMan.delegate = self;
+    
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    [self.locMan requestWhenInUseAuthorization];
+                    
+    [self.mapView setShowsUserLocation:YES];
+    
+    [self.view addSubview:self.mapView];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

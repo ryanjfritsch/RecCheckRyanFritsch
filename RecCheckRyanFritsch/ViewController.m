@@ -16,7 +16,6 @@
 
 
 
-
 @implementation ViewController
 
 
@@ -42,6 +41,8 @@
     [self.mapView setMapType:MKMapTypeHybrid];
     [self.view addSubview:self.mapView];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     
     UITapGestureRecognizer *tapR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapPress:)];
     [self.mapView addGestureRecognizer:tapR];
@@ -51,6 +52,10 @@
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 
 

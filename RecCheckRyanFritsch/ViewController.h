@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Addressbook/Addressbook.h>
 
 #import "MapPin.h"
 
@@ -16,7 +17,17 @@
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locMan;
 @property (weak, nonatomic) IBOutlet UIButton *coordList;
+@property (weak, nonatomic) IBOutlet UIButton *savePin;
+//@property (strong, nonatomic) CLGeocoder *geocode;
 @property (nonatomic) int started;
+@property (nonatomic) NSString* pinName;
+@property (nonatomic) float longit;
+@property (nonatomic) float latit;
+
+@property (nonatomic) MapPin* pin;
+
+
+-(IBAction)savedPin:(UIButton *)sender;
 
 
 @end

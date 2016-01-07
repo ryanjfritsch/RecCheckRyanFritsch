@@ -18,9 +18,10 @@
 @property (strong, nonatomic) CLLocationManager *locMan;
 @property (weak, nonatomic) IBOutlet UIButton *coordList;
 @property (weak, nonatomic) IBOutlet UIButton *savePin;
-//@property (strong, nonatomic) CLGeocoder *geocode;
+@property (strong, nonatomic) CLGeocoder *geocoder;
 @property (nonatomic) int started;
 @property (nonatomic) NSString* pinName;
+@property (nonatomic) NSString* pinAddressString;
 @property (nonatomic) float longit;
 @property (nonatomic) float latit;
 

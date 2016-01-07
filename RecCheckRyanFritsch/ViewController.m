@@ -69,31 +69,89 @@
 }
 
 
+-(IBAction)unwindToMapVC:(UIStoryboardSegue *)unwindSegue{
+
+
+}
+
+
 
 - (void)handleTapPress:(UIGestureRecognizer *)gestureRecognizer
 {
+    //create a new pin
     
     [self clearPins];
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
-    //MKPlacemark *placeM = [[MKPlacemark alloc] initWithCoordinate:touchMapCoordinate addressDictionary:nil];
+    //MapPin *pin = [[MapPin alloc] init];
+    //pin.coordinate = touchMapCoordinate;
     
-    MapPin *pin = [[MapPin alloc] init];
-    pin.coordinate = touchMapCoordinate;
-    
-    self.longit = pin.coordinate.longitude;
-    self.latit = pin.coordinate.latitude;
-    
-    [self.mapView addAnnotation:pin]; //adds pin to map
+    self.longit = touchMapCoordinate.longitude;
+    self.latit = touchMapCoordinate.latitude;
     
     if (!self.animating) {
         [self.savePin setImage:[UIImage imageNamed:@"uploadBlue2.png"] forState:UIControlStateNormal];
     }
     
+    [self getAddressInformation];
+    
+    //pin.title = self.pinAddressString;
+
+    //[self.mapView addAnnotation:pin]; //adds pin to map
+    
 }
 
+
+
+-(void)setPinToMap{
+    
+    CLLocationCoordinate2D temp = CLLocationCoordinate2DMake(self.latit, self.longit);
+    
+    MapPin *pin = [[MapPin alloc] init];
+    pin.coordinate = temp;
+    
+    pin.title = self.pinAddressString;
+    
+    [self.mapView addAnnotation:pin]; //adds pin to map
+
+
+}
+
+
+
+
+
+
+- (void)getAddressInformation
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.latit longitude:self.longit];
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error){
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        
+        if(placemarks && placemarks.count > 0)
+        {
+            CLPlacemark *topResult = [placemarks objectAtIndex:0];
+            
+            self.pinAddressString = [NSString stringWithFormat:@"%@ %@, %@ %@",
+                                    [topResult subThoroughfare],[topResult thoroughfare],
+                                    [topResult locality], [topResult administrativeArea]];
+        }
+        
+        //print address info
+        //NSLog(@"%@", self.pinAddressString);
+        
+        [self setPinToMap];
+        
+     }];
+    
+}
 
 
 - (void)clearPins    //when user adds new pin, clear old pins
@@ -141,6 +199,7 @@
                                                        
                                                        sPin[@"location"] = point;
                                                        sPin[@"name"] = self.pinName;
+                                                       sPin[@"street"] = self.pinAddressString;
                                                        
                                                        [sPin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                                            if (succeeded) {
@@ -176,9 +235,6 @@
         }];
         
         [self presentViewController:alert animated:YES completion:nil];
-
-        
-        NSLog(@"PIN SAVED");
 
         
         
@@ -254,7 +310,6 @@
     
     
 }
-
 
 
 

@@ -29,6 +29,7 @@
 		3260FAB41C3DD57B005E8894 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3260FAB31C3DD57B005E8894 /* libsqlite3.tbd */; };
 		3260FABB1C3DD7C9005E8894 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3260FABA1C3DD7C9005E8894 /* Bolts.framework */; };
 		3260FABD1C3DD7DA005E8894 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3260FABC1C3DD7DA005E8894 /* Parse.framework */; };
+		3260FAC01C3E3C62005E8894 /* SavedPinsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3260FABF1C3E3C62005E8894 /* SavedPinsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		3260FAB31C3DD57B005E8894 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3260FABA1C3DD7C9005E8894 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = RecCheckRyanFritsch/Bolts.framework; sourceTree = "<group>"; };
 		3260FABC1C3DD7DA005E8894 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = RecCheckRyanFritsch/Parse.framework; sourceTree = "<group>"; };
+		3260FABE1C3E3C62005E8894 /* SavedPinsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedPinsTableViewController.h; sourceTree = "<group>"; };
+		3260FABF1C3E3C62005E8894 /* SavedPinsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedPinsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				3260FA641C3D92F8005E8894 /* AppDelegate.m */,
 				3260FA661C3D92F8005E8894 /* ViewController.h */,
 				3260FA671C3D92F8005E8894 /* ViewController.m */,
+				3260FABE1C3E3C62005E8894 /* SavedPinsTableViewController.h */,
+				3260FABF1C3E3C62005E8894 /* SavedPinsTableViewController.m */,
 				3260FA9A1C3DAD3D005E8894 /* MapPin.h */,
 				3260FA9B1C3DAD3D005E8894 /* MapPin.m */,
 				3260FA691C3D92F8005E8894 /* Main.storyboard */,
@@ -328,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3260FA9C1C3DAD3D005E8894 /* MapPin.m in Sources */,
+				3260FAC01C3E3C62005E8894 /* SavedPinsTableViewController.m in Sources */,
 				3260FA681C3D92F8005E8894 /* ViewController.m in Sources */,
 				3260FA651C3D92F8005E8894 /* AppDelegate.m in Sources */,
 				3260FA621C3D92F8005E8894 /* main.m in Sources */,

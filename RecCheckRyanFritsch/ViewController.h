@@ -24,6 +24,8 @@
 @property (nonatomic) float longit;
 @property (nonatomic) float latit;
 
+@property (nonatomic) BOOL animating;
+
 @property (nonatomic) MapPin* pin;
 
 

@@ -30,6 +30,8 @@
     self.longit = 0;
     self.latit = 0;
     
+    self.animating = false;
+    
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     //self.geocode = [[CLGeocoder alloc] init];
@@ -71,9 +73,6 @@
 - (void)handleTapPress:(UIGestureRecognizer *)gestureRecognizer
 {
     
-    //if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
-        //return;
-    
     [self clearPins];
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
@@ -89,6 +88,9 @@
     
     [self.mapView addAnnotation:pin]; //adds pin to map
     
+    if (!self.animating) {
+        [self.savePin setImage:[UIImage imageNamed:@"uploadBlue2.png"] forState:UIControlStateNormal];
+    }
     
 }
 
@@ -111,11 +113,21 @@
     
     if(self.mapView.annotations.count == 1){
         
-        NSLog(@"NO PINS");
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"No Pins Placed" message:@"To place a pin, tap anywhere on the map. Once a pin is placed, it may be saved." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
         
     }
     
     else{
+        
+        //[self.savePin setImage:[UIImage imageNamed:@"uploadGrey2.png"] forState:UIControlStateNormal];
         
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Name Pin" message:@"Please name the location of the pin you would like to save:" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -132,7 +144,11 @@
                                                        
                                                        [sPin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                                            if (succeeded) {
+                                                               [self.view endEditing:YES];
                                                                [self clearPins];
+                                                               [self.savePin setImage:[UIImage imageNamed:@"uploadGreen2.png"] forState:UIControlStateNormal];
+                                                               [self fadeSaveButton];
+                                                               
                                                            } else {
                                                                // There was a problem, check error.description
                                                            }
@@ -163,56 +179,81 @@
 
         
         NSLog(@"PIN SAVED");
-        
-        
-        /*
-        PFObject *sPin = [PFObject objectWithClassName:@"SavedPin"];
-        PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.latit longitude:self.longit];
-        
-        sPin[@"location"] = point;
-        sPin[@"name"] = self.pinName;
-        
-        [sPin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                // The object has been saved.
-            } else {
-                // There was a problem, check error.description
-            }
-        }];
-         */
 
         
         
     }
     
     
-    /*
-    PFObject *sPin = [PFObject objectWithClassName:@"SavedPin"];
-    
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:40.0 longitude:-30.0];
-    
-    sPin[@"location"] = point;
-    
-    //sPin[@"time"] = @1337;
-    //sPin[@"playerName"] = @"Sean Plott";
-    //sPin[@"cheatMode"] = @NO;
-    
-    [sPin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // The object has been saved.
-        } else {
-            // There was a problem, check error.description
-        }
-    }];
-
-    */
-    
-    
     
 }
 
 
+- (void)fadeSaveButton {
+    
+    self.animating = true;
+    
+    [self.savePin setImage:[UIImage imageNamed:@"uploadBlue2.png"] forState:UIControlStateNormal];
+    
+    //fade in and out three times
+    [UIView animateWithDuration:0.4 animations:^{
+        self.savePin.alpha = 0.2;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.savePin.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.4 animations:^{
+                self.savePin.alpha = 0.2;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.4 animations:^{
+                    self.savePin.alpha = 1.0;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.4 animations:^{
+                        self.savePin.alpha = 0.2;
+                    } completion:^(BOOL finished) {
+                        
+                        //show green as saved
+                        [self.savePin setImage:[UIImage imageNamed:@"saved.png"] forState:UIControlStateNormal];
+                        
+                        [UIView animateWithDuration:0.4 animations:^{
+                            self.savePin.alpha = 1.0;
+                        } completion:^(BOOL finished) {
+                        
+                            [UIView animateWithDuration:0.4 delay:2.0 options:UIViewAnimationCurveEaseOut animations:^{
+                                self.savePin.alpha = 0.2;
+                            } completion:^(BOOL finished) {
+                                
+                                if(self.mapView.annotations.count == 1){
+                                    [self.savePin setImage:[UIImage imageNamed:@"uploadGrey2.png"] forState:UIControlStateNormal];
+                                }
+                                else{
+                                    [self.savePin setImage:[UIImage imageNamed:@"uploadBlue2.png"] forState:UIControlStateNormal];
+                                }
+                                
+                                [UIView animateWithDuration:0.4 animations:^{
+                                    self.savePin.alpha = 1.0;
+                                } completion:^(BOOL finished) {
+                                    self.animating = false;
+                                }
+                                 ];
+                            }];
+                        }
+                         ];
+                    }
+                     ];
+                }
+                 ];
+            }
+             ];
+        }
+         ];
+    }
+    ];
+    
 
+    
+    
+}
 
 
 
